@@ -1,0 +1,51 @@
+# .claudeignore
+# Blocks these paths from being read by Claude during research and PRP generation.
+# Prevents wasting context window on irrelevant files.
+
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+.vercel/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+poetry.lock
+
+# Generated / compiled
+*.min.js
+*.min.css
+*.map
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Database
+*.sqlite
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# Archives (read-only reference, don't parse)
+docs/archive/
