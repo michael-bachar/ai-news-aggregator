@@ -3,9 +3,24 @@
 ## How This System Works
 See @docs/system-guide.md for a full explanation of the file structure, build process, and how to use PRPs.
 
+**Before any feature work:** Read @docs/brainstorms/ for relevant prior decisions. The brainstorm doc captures all key architecture, stack, and scope decisions made before implementation began.
+
+## Model Selection
+- **Opus** — complex, multi-phase builds, architecture decisions, anything touching 5+ files
+- **Sonnet** — simple tasks, single-file edits, quick fixes
+
+## Plan Mode (use this, every session)
+Press **Shift+Tab twice** to activate. Claude reads files and writes a plan without touching any code.
+Press **Ctrl+G** to open the plan in your editor and annotate it before executing.
+Exit plan mode and Claude one-shots the implementation from the approved plan.
+
 ## Build Loop (the mental model)
-UNDERSTAND → SPECIFY → ALIGN → BUILD → VERIFY → COMPOUND → repeat
-- UNDERSTAND: /research (for complex features) before writing INITIAL.md
+**Simple task** (describable in one sentence) → just do it directly
+**Medium task** (multi-file, clear scope) → Plan Mode → execute
+**Complex feature** (multi-phase, architecture decisions) → brainstorm → INITIAL.md → /generate-prp → /execute-prp
+
+For complex features:
+- UNDERSTAND: /research before writing INITIAL.md
 - SPECIFY: fill INITIAL.md → /generate-prp → produces PRP
 - ALIGN: annotate PRP inline → "address notes, don't implement yet" → iterate
 - BUILD: /execute-prp → Ralph loop (implement → validate → fix → validate → proceed)
@@ -16,13 +31,14 @@ UNDERSTAND → SPECIFY → ALIGN → BUILD → VERIFY → COMPOUND → repeat
 Agentic AI news aggregator — pulls from RSS feeds, newsletters, and email to surface what's worth reading.
 Filters signal from noise, synthesizes key developments, and delivers a ranked digest on a schedule.
 
-**Phase 1 (v1):** RSS + newsletter ingestion → relevance scoring → daily digest
-**Phase 2 (v2):** Gmail/email integration → personalized ranking → summaries with interview angles
+**V1:** RSS + YouTube transcript ingestion → Jaccard deduplication → Claude scoring → Claude clustering → Claude synthesis → web dashboard (daily + weekly views)
+**V2:** Multi-user, hosted, LinkedIn content generation handoff to Content Agent
 
 **Agents:** Python, Claude API (Anthropic SDK)
-**Storage:** SQLite (local dev) → Postgres (prod)
-**Delivery:** CLI digest → email/Slack notification (v2)
-**Scheduler:** cron / APScheduler
+**Storage:** SQLite
+**Delivery:** FastAPI + Jinja2 web dashboard
+**Scheduler:** GitHub Actions (6am daily, Sunday weekly)
+**Config:** All user-specific data in config.yaml — sources, topics, relevance criteria. Nothing hardcoded.
 
 ---
 
