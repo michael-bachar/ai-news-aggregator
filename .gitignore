@@ -11,6 +11,7 @@ __pycache__/
 .cursor/
 .vscode/
 .idea/
+.claude/
 
 # OS
 .DS_Store
@@ -19,3 +20,11 @@ __pycache__/
 *.key
 secrets/
 excalidraw.log
+
+# Database
+data/
+*.db
+*.sqlite
+
+# Config (copy from config.example.yaml)
+config.yaml

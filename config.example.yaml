@@ -1,0 +1,66 @@
+persona: "AI Product Manager focused on thought leadership, product craft, and building with AI tools. Interested in agentic AI systems, LLM orchestration, RAG, and how AI is reshaping product development and strategy."
+
+topics:
+  - AI strategy and product
+  - Agentic AI systems
+  - LLMs and foundational models
+  - AI PM craft and product leadership
+  - Building with Claude and Claude Code
+  - RAG and retrieval systems
+  - AI policy and regulation
+  - Big tech AI moves (Anthropic, OpenAI, Google, Microsoft, Meta)
+
+relevance_threshold: 6  # Items scored below this (1-10) are dropped
+max_daily_stories: 10   # Max story clusters in daily digest
+dedup_threshold: 0.5    # Jaccard similarity threshold for deduplication
+daily_token_budget: 50000
+
+sources:
+  - name: "AI Daily Brief"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "The Batch"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "Stratechery"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "The Rundown AI"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "TLDR AI"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "Anthropic Blog"
+    url: "https://www.anthropic.com/rss.xml"
+    type: rss
+
+  - name: "OpenAI Blog"
+    url: "https://openai.com/blog/rss.xml"
+    type: rss
+
+  - name: "Simon Willison"
+    url: "https://simonwillison.net/atom/everything/"
+    type: rss
+
+  - name: "One Useful Thing (Ethan Mollick)"
+    url: "https://www.oneusefulthing.org/feed"
+    type: rss
+
+  - name: "Lenny's Newsletter"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  - name: "Hard Fork Podcast"
+    url: "https://your-feed-url-here"
+    type: rss
+
+  # YouTube sources — provide channel or playlist URL
+  # - name: "Example YouTube Channel"
+  #   url: "https://www.youtube.com/watch?v=VIDEO_ID"
+  #   type: youtube

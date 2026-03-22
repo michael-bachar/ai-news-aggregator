@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ai-news-dashboard
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.dashboard.app:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: news-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: DB_PATH
+        value: /data/news.db
+
+  - type: cron
+    name: ai-news-daily
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    schedule: "0 11 * * *"
+    command: python3 -m src.run --daily --db /data/news.db
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false

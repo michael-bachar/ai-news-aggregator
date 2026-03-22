@@ -1,0 +1,65 @@
+name: AI News Digest
+
+on:
+  schedule:
+    # Daily digest: 6am UTC every day
+    - cron: "0 6 * * *"
+    # Weekly digest: 10pm UTC every Sunday
+    - cron: "0 22 * * 0"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Run mode"
+        required: true
+        default: "daily"
+        type: choice
+        options:
+          - daily
+          - weekly
+
+jobs:
+  run-digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore database
+        uses: actions/cache@v4
+        with:
+          path: data/news.db
+          key: news-db-${{ github.run_id }}
+          restore-keys: |
+            news-db-
+
+      - name: Determine run mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+          elif [ "$(date +%u)" = "7" ]; then
+            echo "mode=weekly" >> $GITHUB_OUTPUT
+          else
+            echo "mode=daily" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m src.run --${{ steps.mode.outputs.mode }}
+
+      - name: Save database
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/news.db
+          key: news-db-${{ github.run_id }}

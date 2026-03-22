@@ -1,16 +1,24 @@
 # Tasks
 
 ## Active
-_Nothing in progress yet._
+_Nothing in progress._
 
 ## Backlog
-- [ ] Define initial list of RSS feeds and newsletters to ingest
-- [ ] Set up ingestion pipeline (RSS reader)
-- [ ] Build relevance scoring agent (Claude)
-- [ ] Build digest synthesis agent (Claude)
-- [ ] CLI output for daily digest
-- [ ] SQLite storage layer
-- [ ] APScheduler for daily runs
+- [ ] Populate config.yaml with real RSS feed URLs (copy from config.example.yaml)
+- [ ] Confirm Ben Erez + Aman Khan feed URLs
+- [ ] Confirm Hard Fork podcast RSS URL
+- [ ] Run end-to-end with 2-3 real sources, verify digest renders at localhost:8000
+- [ ] Add ANTHROPIC_API_KEY to GitHub repo secrets for Actions
 
 ## Done
-_Nothing done yet._
+- [x] Set up ingestion pipeline (RSS + YouTube)
+- [x] Build Jaccard deduplication
+- [x] Build relevance scoring agent (Claude Haiku)
+- [x] Build clustering agent (Claude Sonnet)
+- [x] Build synthesis agent (Claude Sonnet)
+- [x] Build digest orchestrator (daily + weekly)
+- [x] SQLite storage layer
+- [x] FastAPI + Jinja2 web dashboard (daily + weekly views)
+- [x] CLI entrypoint (python -m src.run --daily / --weekly)
+- [x] GitHub Actions cron (6am daily + Sunday weekly)
+- [x] Unit tests (dedup, config, db) — 13 passing
