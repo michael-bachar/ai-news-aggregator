@@ -1,11 +1,6 @@
 name: AI News Digest
 
 on:
-  schedule:
-    # Daily digest: 6am UTC every day
-    - cron: "0 6 * * *"
-    # Weekly digest: 10pm UTC every Sunday
-    - cron: "0 22 * * 0"
   workflow_dispatch:
     inputs:
       mode:
@@ -43,14 +38,7 @@ jobs:
 
       - name: Determine run mode
         id: mode
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
-          elif [ "$(date +%u)" = "7" ]; then
-            echo "mode=weekly" >> $GITHUB_OUTPUT
-          else
-            echo "mode=daily" >> $GITHUB_OUTPUT
-          fi
+        run: echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
 
       - name: Run digest
         env:

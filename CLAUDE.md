@@ -3,7 +3,13 @@
 ## How This System Works
 See @docs/system-guide.md for a full explanation of the file structure, build process, and how to use PRPs.
 
-**Before any feature work:** Read @docs/brainstorms/ for relevant prior decisions. The brainstorm doc captures all key architecture, stack, and scope decisions made before implementation began.
+## Session Startup (every session, in this order)
+1. Read @tasks/lessons.md — apply all patterns and anti-patterns before touching anything
+2. Read @docs/decisions/ — check for relevant architecture decisions before proposing new approaches
+3. Read @tasks/todo.md — what phase are we on, what's next
+4. Read @docs/brainstorms/ — relevant context for what we're building
+
+**Before any feature work:** Also read @docs/learnings/ to reinforce the mental models that inform how we build.
 
 ## Model Selection
 - **Opus** — complex, multi-phase builds, architecture decisions, anything touching 5+ files
@@ -55,7 +61,7 @@ ai-news-aggregator/
 ├── examples/            # Sample inputs/outputs for agent context
 ├── PRPs/                # Feature specs (generated, not hand-written)
 │   └── templates/
-├── docs/                # System guide, brainstorms, archive
+├── docs/                # System guide, brainstorms, decisions, learnings, archive
 ├── tasks/               # todo.md and lessons.md
 ├── CLAUDE.md            # This file
 └── INITIAL.md           # Feature request template

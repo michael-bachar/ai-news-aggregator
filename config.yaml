@@ -1,0 +1,102 @@
+persona: "AI Product Manager focused on thought leadership, product craft, and building with AI tools. Interested in agentic AI systems, LLM orchestration, RAG, and how AI is reshaping product development and strategy."
+
+topics:
+  - AI strategy and product
+  - Agentic AI systems
+  - LLMs and foundational models
+  - AI PM craft and product leadership
+  - Building with Claude and Claude Code
+  - RAG and retrieval systems
+  - AI policy and regulation
+  - Big tech AI moves (Anthropic, OpenAI, Google, Microsoft, Meta)
+
+relevance_threshold: 6
+max_daily_stories: 10
+dedup_threshold: 0.5
+daily_token_budget: 50000
+
+sources:
+  - name: "Aakash G"
+    url: "https://www.news.aakashg.com/feed"
+    type: rss
+
+  - name: "Simon Willison"
+    url: "https://simonwillison.net/atom/everything/"
+    type: rss
+
+  - name: "One Useful Thing (Ethan Mollick)"
+    url: "https://www.oneusefulthing.org/feed"
+    type: rss
+
+  - name: "OpenAI Blog"
+    url: "https://openai.com/news/rss.xml"
+    type: rss
+
+  - name: "Lenny's Newsletter"
+    url: "https://www.lennysnewsletter.com/feed"
+    type: rss
+
+  - name: "TLDR AI"
+    url: "https://tldr.tech/api/rss/ai"
+    type: rss
+
+  - name: "Import AI (Jack Clark)"
+    url: "https://importai.substack.com/feed"
+    type: rss
+
+  - name: "Interconnects AI (Nathan Lambert)"
+    url: "https://www.interconnects.ai/feed"
+    type: rss
+
+  - name: "Hugging Face Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+    type: rss
+
+  - name: "The Gradient"
+    url: "https://thegradient.pub/rss/"
+    type: rss
+
+  - name: "Hard Fork Podcast"
+    url: "https://feeds.simplecast.com/l2i9YnTd"
+    type: rss
+
+  - name: "Anthropic Research"
+    url: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml"
+    type: rss
+
+  - name: "Ben Erez"
+    url: "https://benerez.substack.com/feed"
+    type: rss
+
+  - name: "Aman Khan (AI Product Playbook)"
+    url: "https://amankhan1.substack.com/feed"
+    type: rss
+
+  - name: "The Product Compass (Paweł Huryn)"
+    url: "https://www.productcompass.pm/feed"
+    type: rss
+
+  - name: "Marily Nika (AI Product Academy)"
+    url: "https://marily.substack.com/feed"
+    type: rss
+
+  - name: "Nate Jones (AI Strategy Daily)"
+    url: "https://natesnewsletter.substack.com/feed"
+    type: rss
+
+  - name: "Shubham Saboo (Unwind AI)"
+    url: "https://unwindai.substack.com/feed"
+    type: rss
+
+  - name: "Ruben Hassid (How to AI)"
+    url: "https://ruben.substack.com/feed"
+    type: rss
+
+  - name: "Greg Isenberg (Greg's Letter)"
+    url: "https://latecheckout.substack.com/feed"
+    type: rss
+
+
+  - name: "Liam Ottley (YouTube)"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCui4jxDaMb53Gdh-AZUTPAg"
+    type: rss

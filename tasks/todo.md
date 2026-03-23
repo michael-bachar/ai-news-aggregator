@@ -4,11 +4,18 @@
 _Nothing in progress._
 
 ## Backlog
-- [ ] Populate config.yaml with real RSS feed URLs (copy from config.example.yaml)
-- [ ] Confirm Ben Erez + Aman Khan feed URLs
-- [ ] Confirm Hard Fork podcast RSS URL
-- [ ] Run end-to-end with 2-3 real sources, verify digest renders at localhost:8000
 - [ ] Add ANTHROPIC_API_KEY to GitHub repo secrets for Actions
+- [x] Day selector on dashboard (prev/next navigation + available dates from DB)
+- [ ] Deploy dashboard to Render — code complete, manual steps remain (see below)
+- [ ] ReAct scoring agent (reason + fetch loop for uncertain snippets)
+- [ ] Critic loop on synthesis agent
+
+### Render Deployment — Remaining Manual Steps
+1. Go to render.com → New → Blueprint → connect GitHub repo
+2. Set ANTHROPIC_API_KEY secret when prompted
+3. Click Apply/Deploy
+4. Once live: Render Shell tab → `python -m src.run --daily --db /data/news.db` to seed DB
+5. Reload dashboard URL to verify
 
 ## Done
 - [x] Set up ingestion pipeline (RSS + YouTube)

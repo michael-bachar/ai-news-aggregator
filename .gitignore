@@ -26,5 +26,3 @@ data/
 *.db
 *.sqlite
 
-# Config (copy from config.example.yaml)
-config.yaml
