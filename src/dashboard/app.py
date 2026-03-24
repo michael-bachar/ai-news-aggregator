@@ -8,13 +8,13 @@ from pathlib import Path
 from typing import Optional
 from urllib.parse import urlparse
 
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler  # type: ignore[import-untyped]
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from src.config import load_config
-from src.db import db, get_available_dates, get_digest, get_latest_digest
+from src.db import db, get_available_dates, get_digest, get_latest_digest, init_db
 from src.digest import run_daily, run_weekly
 
 TEMPLATES_DIR = Path(__file__).parent / "templates"
@@ -25,6 +25,7 @@ DB_PATH = Path(os.environ.get("DB_PATH", "data/news.db"))
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     config = load_config()
     db_path = Path(os.environ.get("DB_PATH", "data/news.db"))
+    init_db(db_path)
     scheduler = BackgroundScheduler()
 
     def _run_daily() -> None:
