@@ -13,7 +13,8 @@ DB_PATH = Path("data/news.db")
 
 
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
-    db_path.parent.mkdir(parents=True, exist_ok=True)
+    if not db_path.parent.exists():
+        db_path.parent.mkdir(parents=True)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
